@@ -1,0 +1,169 @@
+// Written by Nicholas Oliver Bahary
+// on 14 September 2024
+[
+  {
+    "layer": "top",
+    "position": "top",
+    "margin-top": 1,
+    "margin-bottom": 5,
+    "margin-left": 5,
+    "margin-right": 5,
+    "modules-left": ["custom/wofi", "hyprland/workspaces", "mpris"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": [
+      "hyprland/language",
+      "cpu",
+      "memory",
+      "tray",
+      "pulseaudio",
+      "clock",
+      "custom/weather",
+      "custom/color-picker",
+      "custom/swaync",
+      "custom/power"
+    ],
+    "custom/weather": {
+        "format": "{}",
+        "format-alt": "{alt}: {}",
+        "format-alt-click": "click",
+        "interval": 3600,
+        "return-type": "json",
+        "exec": "~/.config/hypr/scripts/Weather.sh",
+        "exec": "~/.config/hypr/scripts/Weather.py",
+        "exec-if": "ping wttr.in -c1",
+        "tooltip" : true,
+    },
+    "custom/swaync": {
+        "tooltip":true,     
+        "format": "{icon} {}",
+        "format-icons": {
+          "notification": "<span foreground='red'><sup></sup></span>",
+          "none": "",
+          "dnd-notification": "<span foreground='red'><sup></sup></span>",
+          "dnd-none": "",
+          "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+          "inhibited-none": "",
+          "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+          "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "sleep 0.1 && swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true,
+    },
+    "hyprland/language": {
+        "format": "{}",
+        "format-ru": "🇷🇺 RU",
+        "format-en": "🇺🇸 US"
+    },
+    "custom/wofi": {
+      "format": "",
+      "on-click": "wofi --show drun",
+      "on-click-middle": "pkill -9 wofi",
+      "tooltip-format": "{}",
+      "exec": "~/.config/waybar/scripts/cheatsheet.py",
+      "interval": "once"
+    },
+    "hyprland/workspaces": {
+      "all-outputs": true,
+      "format": "{name}",
+      "format-icons": {
+        "active": "",
+        "visible": ""
+      },
+      "on-scroll-up": "hyprctl dispatch workspace e+1 1>/dev/null",
+      "on-scroll-down": "hyprctl dispatch workspace e-1 1>/dev/null",
+      "sort-by-number": true,
+      "active-only": false,
+      "persistent-workspaces": {
+        "HDMI-A-1": [
+          9, 12
+        ] // but only three on HDMI-A-1
+      }
+    },
+    "mpris": {
+      "format": "{player_icon}  {artist} - {title}",
+      "format-paused": "{status_icon}  {artist} - {title}",
+      "tooltip-format": "{player}  ({status})\r{artist} - {title}\r\rLeft-Click:   Play / Pause\rMiddle-Click: Previous Track\rRight-Click:  Next Track",
+      "title-len": 20,
+      "player-icons": {
+        "default": "▶",
+        "mpv": "",
+        "spotify": "󰓇"
+      },
+      "status-icons": {
+        "paused": "",
+        "stopped": ""
+      }
+    },
+    "hyprland/window": {
+      "format": "{title}",
+      "separate-outputs": true,
+      "rewrite": {
+        "(.*) — Mozilla Firefox": "󰈹  $1",
+        "(.*) — Zen Browser": "󰈹  Zen - $1",
+        "(.*) - Google Chrome": "  $1",
+        "(.*) - Visual Studio Code": "󰨞  $1",
+        "(.*) - nvim": "  $1",
+        "(.*) - Obsidian(.*)": "󱓧  $1",
+        "(.*) - fish": "  $1",
+        "yazi: (.*)": "  $1",
+        "nwg-look": "  GTK Settings",
+        "Qt6 Configuration Tool": "  QT Settings",
+        "blueman-manager": "Bluetooth Settings"
+      }
+    },
+    "clock": {
+      "format": "{:%H:%M %d.%m.%Y}",
+      "tooltip-format": "<tt>{calendar}</tt>",
+      "calendar": {
+        "mode": "month",
+        "format": {
+          "months": "<span color='#cdd6f4'><b>{}</b></span>",
+          "days": "<span color='#cdd6f4'><b>{}</b></span>",
+          "weeks": "<span color='#cdd6f4'><b>W{}</b></span>",
+          "weekdays": "<span color='#cdd6f4'><b>{}</b></span>",
+          "today": "<span color='#f38ba8'><b>{}</b></span>"
+        }
+      }
+    },
+    "cpu": {
+        "format": "  {usage}%",
+        "on-click": "kitty -e btop"
+    },
+
+    "memory": {
+        "format": "  {}%",
+        "on-click": "kitty -e btop"
+    },
+    "tray": {
+      "icon-size": 15,
+      "spacing": 10
+    },
+    "pulseaudio": {
+      "format": "{icon}  <b>{volume}%</b>",
+      "format-muted": " 󰝟 ",
+      "format-bluetooth": "{icon}   <b>{volume}%</b>",
+      "format-bluetooth-muted": "󰝟 ",
+      "format-icons": {
+        "headset": "",
+        "default": ["󰕿", "󰖀", "󰕾"]
+      },
+      "tooltip": true,
+      "on-click": "pavucontrol",
+      "ignored-sinks": ["JamesDSP Sink", "Easy Effects Sink", "HDA NVidia Digital Stereo (HDMI)"]
+    },
+    "custom/color-picker": {
+      "format": "",
+      "on-click": "hyprpicker -an && notify-send 'Colour copied to clipboard'", // Show the colour in the notification with wl-paste.
+      "tooltip-format": "Color Picker"
+    },
+    "custom/power": {
+      "format": "",
+      "tooltip": false,
+      "on-click": "wlogout"
+    }
+  }
+]
