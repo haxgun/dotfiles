@@ -2,9 +2,10 @@
   background: none;
 }
 #waybar.top > box.horizontal {
-  background: #222222;
+  background: rgba(24, 24, 24, 0.5);
   box-shadow: 0 0 4pt #222222;
-  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
   padding: 2pt;
 }
 
@@ -67,6 +68,11 @@
   margin-right: 12pt;
 }
 
+#custom-weather {
+  color: #fff9a7;
+  margin-right: 15pt;
+}
+
 #tray {
   margin-right: 10pt;
 }
@@ -91,50 +97,21 @@
     color: #cdd6f4;
   }
 }
-#backlight {
-  color: #cba6f7;
-  margin-right: 10pt;
-}
 
 #pulseaudio {
   color: #74c7ec;
   margin-right: 10pt;
 }
 
-#battery {
-  color: #f9e2af;
-  margin-right: 15pt;
-}
-
-#battery.full,
-#battery.good,
-#battery.charging,
-#battery.plugged {
-  color: #a6e3a1;
-}
-
-#battery.critical:not(.charging) {
-  color: #f38ba8;
-  animation-name: blink;
-  animation-duration: 0.5s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-}
-
 #custom-color-picker {
-  margin-right: 18pt;
-  font-size: 9pt;
-}
-
-#custom-screenshot {
+  margin-left: 5px;
   margin-right: 18pt;
   font-size: 10pt;
 }
 
-#custom-wallpaper {
-  margin-right: 16pt;
-  font-size: 12pt;
+#custom-swaync {
+  margin-right: 18pt;
+  font-size: 10pt;
 }
 
 #custom-power {
