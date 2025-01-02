@@ -1,7 +1,7 @@
 show=drun
-width=45%
-height=40%
-prompt=Search...
+width=600px
+height=650px
+prompt=Поиск...
 normal_window=true
 location=center
 gtk-dark=true

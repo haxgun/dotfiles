@@ -16,20 +16,27 @@
       "memory",
       "temperature",
       "pulseaudio",
+      "custom/vpn",
       "clock",
       "custom/weather",
-      "tray",
       "custom/color-picker",
       "custom/swaync",
       "custom/power"
     ],
 	   "custom/weather": {
-	       "format": "{}°",
-	       "tooltip": true,
-	       "interval": 3600,
-	       "exec": "wttrbar --nerd --location Chusovoy --lang ru",
-	       "return-type": "json"
+      "format": "{}°",
+      "tooltip": true,
+      "interval": 3600,
+      "exec": "wttrbar --nerd --location Chusovoy --lang ru",
+      "return-type": "json"
 	   },
+	"custom/vpn": {
+	    "format": "VPN ",
+	    "exec": "echo '{\"class\": \"connected\"}'",
+	    "exec-if": "test -d /proc/sys/net/ipv4/conf/neko-tun",
+	    "return-type": "json",
+	    "interval": 5
+	},
     "custom/swaync": {
         "tooltip":true,
         "format": "{icon}",
