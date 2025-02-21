@@ -43,12 +43,12 @@
   "widgets": ["label", "mpris", "title", "dnd", "notifications"],
   "widget-config": {
     "title": {
-      "text": "Notifications",
+      "text": "Уведомления",
       "clear-all-button": true,
       "button-text": " 󰎟 "
     },
     "dnd": {
-      "text": "Do not disturb"
+      "text": "Не беспокоить"
     },
     "label": {
       "max-lines": 1,

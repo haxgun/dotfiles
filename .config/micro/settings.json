@@ -1,0 +1,3 @@
+{
+	"clipboard_control": ["read-primary", "read-clipboard"]
+}

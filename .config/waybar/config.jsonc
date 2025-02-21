@@ -17,8 +17,8 @@
       "temperature",
       "pulseaudio",
       "custom/vpn",
+      "tray",
       "clock",
-      "custom/weather",
       "custom/color-picker",
       "custom/swaync",
       "custom/power"
@@ -149,16 +149,15 @@
     },
     "pulseaudio": {
       "format": "{icon}  <b>{volume}%</b>",
-      "format-muted": " 󰝟 ",
-      "format-bluetooth": "{icon}   <b>{volume}%</b>",
+      "format-muted": "󰝟",
+      "format-bluetooth": "{icon}  <b>{volume}%</b>",
       "format-bluetooth-muted": "󰝟 ",
       "format-icons": {
         "headset": "",
         "default": ["󰕿", "󰖀", "󰕾"]
       },
       "tooltip": true,
-      "on-click": "pavucontrol",
-      "ignored-sinks": ["JamesDSP Sink", "Easy Effects Sink", "HDA NVidia Digital Stereo (HDMI)"]
+      "on-click": "easyeffects"
     },
     "custom/color-picker": {
       "format": "",
