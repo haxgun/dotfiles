@@ -15,7 +15,7 @@ sudo /usr/bin/setcap cap_net_admin=ep /usr/lib/nekoray/nekobox_core
 yay -S --noconfirm apple-font ttf-jetbrains-mono-nerd ttf-jetbrains-mono ttf-google-fonts-git ttf-apple-emoji
 
 echo "Installing desktop applications"
-sudo pacman -S --noconfirm nautilus waybar swaync polkit-gnome easyeffects telegram-desktop copyq btop unzip bitwarden
+sudo pacman -S --noconfirm nautilus waybar swaync polkit-gnome gnome-keyring easyeffects telegram-desktop copyq btop unzip bitwarden
 
 echo "Setting up zsh and oh-my-zsh"
 sudo pacman -S --noconfirm zsh starship
