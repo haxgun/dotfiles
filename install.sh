@@ -33,7 +33,7 @@ echo "Installing Node.js and related packages"
 sudo pacman -S --noconfirm nodejs npm uv
 
 echo "Installing Zed editor"
-curl -f https://zed.dev/install.sh | sh
+yay -S --noconfirm zed-git
 echo 'export PATH=$HOME/.local/bin:$PATH' >> ~/.zshrc
 
 echo "Setting locale to ru_RU.UTF-8"
@@ -42,7 +42,7 @@ sudo locale-gen
 sudo localectl set-locale ru_RU.UTF-8
 
 echo "Installing additional tools and dependencies"
-sudo pacman -S --noconfirm qt6-tools gtk4 gtk3 brightnessctl fastfetch xdg-desktop-portal-hyprland xdg-desktop-portal-gtk lxappearance cantarell-fonts
+sudo pacman -S --noconfirm qt6-tools gtk4 gtk3 brightnessctl fastfetch xdg-desktop-portal-hyprland xdg-desktop-portal-gtk nwg-look cantarell-fonts
 
 echo "Installing themes and icons from AUR"
 yay -S --noconfirm graphite-gtk-theme papirus-icon-theme-git apple_cursor
@@ -61,5 +61,8 @@ yay -S --noconfirm hyprlock-git hyprpaper-git hyprshot wofi-emoji
 yay -S --noconfirm wlogout spotify
 sudo pacman -S --noconfirm hyprpicker
 
+echo "Installing discord"
+sudo pacman -S --noconfirm discord
+
 echo "Copying wallpaper"
-cp wallpaper.jpg ~/
+cp wallpaper.png ~/
