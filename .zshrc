@@ -5,7 +5,6 @@ ZSH_THEME="robbyrussell"
 plugins=(
 git
 zsh-autosuggestions
-zsh-syntax-highlighting
 )
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor root)
@@ -79,22 +78,4 @@ alias .="source"
 
 eval "$(starship init zsh)"
 
-export PNPM_HOME="/home/haxgun/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-
-
-. "$HOME/.local/bin/env"
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/home/haxgun/.lmstudio/bin"
-alias ssh="TERM=xterm-256color ssh" 
-
-# bun completions
-[ -s "/home/haxgun/.bun/_bun" ] && source "/home/haxgun/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+alias ssh="TERM=xterm-256color ssh"
