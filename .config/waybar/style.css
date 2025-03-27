@@ -20,6 +20,12 @@
 	margin-right: 10pt;
 }
 
+#custom-bluetooth {
+	color: #0082FC;
+	margin-right: 10pt;
+	font-size: 11pt;
+}
+
 #workspaces {
   margin-left: 12pt;
 }

@@ -17,19 +17,20 @@
       "temperature",
       "pulseaudio",
       "custom/vpn",
+      "custom/bluetooth",
       "tray",
       "clock",
       "custom/color-picker",
       "custom/swaync",
       "custom/power"
     ],
-	   "custom/weather": {
+	"custom/weather": {
       "format": "{}°",
       "tooltip": true,
       "interval": 3600,
       "exec": "wttrbar --nerd --location Chusovoy --lang ru",
       "return-type": "json"
-	   },
+    },
 	"custom/vpn": {
 	    "format": "VPN ",
 	    "exec": "echo '{\"class\": \"connected\"}'",
@@ -143,6 +144,14 @@
         "format": "  {}%",
         "on-click": "kitty -e btop"
     },
+    "custom/bluetooth": {
+        "exec": "~/.config/waybar/scripts/bluetooth.sh",
+        "interval": 10,
+        "on-click": "blueman-manager",
+        "tooltip": true,
+        "format": "{}",
+        "rotate": false
+    },
     "tray": {
       "icon-size": 15,
       "spacing": 10
@@ -150,7 +159,7 @@
     "pulseaudio": {
       "format": "{icon}  <b>{volume}%</b>",
       "format-muted": "󰝟",
-      "format-bluetooth": "{icon}  <b>{volume}%</b>",
+      "format-bluetooth": "{icon}   <b>{volume}%</b>",
       "format-bluetooth-muted": "󰝟 ",
       "format-icons": {
         "headset": "",
