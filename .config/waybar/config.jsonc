@@ -145,12 +145,13 @@
         "on-click": "kitty -e btop"
     },
     "custom/bluetooth": {
-        "exec": "~/.config/waybar/scripts/bluetooth.sh",
-        "interval": 10,
-        "on-click": "blueman-manager",
-        "tooltip": true,
-        "format": "{}",
-        "rotate": false
+      "exec": "~/.config/waybar/scripts/bluetooth.sh",
+      "interval": 10,
+      "on-click": "blueman-manager",
+      "tooltip": true,
+      "tooltip-format": "Bluetooth",
+      "format": "{}",
+      "rotate": false
     },
     "tray": {
       "icon-size": 15,
@@ -170,7 +171,7 @@
     },
     "custom/color-picker": {
       "format": "",
-      "on-click": "hyprpicker -an && notify-send 'Colour copied to clipboard'", // Show the colour in the notification with wl-paste.
+      "on-click": "hyprpicker -an",
       "tooltip-format": "Color Picker"
     },
     "custom/power": {
