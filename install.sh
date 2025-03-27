@@ -57,7 +57,7 @@ echo "Copying configuration files"
 cp .config ~/
 
 echo "Installing additional utilities"
-yay -S --noconfirm hyprlock-git hyprpaper-git hyprshot wofi-emoji
+yay -S --noconfirm hyprlock-git hyprpaper-git hyprshot wofi-emoji hyprpicker
 yay -S --noconfirm wlogout spotify
 sudo pacman -S --noconfirm hyprpicker
 
