@@ -12,7 +12,7 @@ git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si && 
 echo "Installing additional packages with yay"
 yay -S --noconfirm zen-browser-bin nekoray-bin sing-geoip-common sing-geoip-db sing-geoip-rule-set sing-geosite-common sing-geosite-db sing-geosite-rule-set
 sudo /usr/bin/setcap cap_net_admin=ep /usr/lib/nekoray/nekobox_core
-yay -S --noconfirm apple-font ttf-jetbrains-mono-nerd ttf-jetbrains-mono ttf-google-fonts-git ttf-apple-emoji
+yay -S --noconfirm apple-font ttf-jetbrains-mono-nerd ttf-jetbrains-mono ttf-google-fonts-git ttf-apple-emoji nerd-fonts-inter
 
 echo "Installing desktop applications"
 sudo pacman -S --noconfirm nautilus waybar swaync polkit-gnome gnome-keyring easyeffects telegram-desktop copyq btop unzip bitwarden
@@ -45,7 +45,7 @@ echo "Installing additional tools and dependencies"
 sudo pacman -S --noconfirm qt6-tools gtk4 gtk3 brightnessctl fastfetch xdg-desktop-portal-hyprland xdg-desktop-portal-gtk nwg-look cantarell-fonts
 
 echo "Installing themes and icons from AUR"
-yay -S --noconfirm graphite-gtk-theme papirus-icon-theme-git apple_cursor
+yay -S --noconfirm whitesur-gtk-theme whitesur-icon-theme whitesur-cursor-theme-git
 
 echo "Creating configuration directories"
 mkdir -p ~/.config/gtk-3.0 ~/.config/gtk-4.0
@@ -66,3 +66,15 @@ sudo pacman -S --noconfirm discord
 
 echo "Copying wallpaper"
 cp wallpaper.png ~/
+
+echo "Installing bluetooth"
+sudo pacman -S --noconfirm bluez bluez-utils blueman
+sudo modprobe btusb
+sudo systemctl start bluetooth.service
+sudo systemctl enable bluetooth.service
+
+echo "Copy .config"
+cp .config ~/
+
+echo "Reboot"
+sudo reboot
