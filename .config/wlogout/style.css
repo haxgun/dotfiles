@@ -52,3 +52,8 @@ button:hover {
 #hibernate:hover {
   background-image: image(url("./icons/hibernate.png"));
 }
+
+#sleep,
+#sleep:hover {
+  background-image: image(url("./icons/sleep.png"));
+}

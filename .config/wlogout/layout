@@ -23,6 +23,12 @@
     "keybind" : "h"
 }
 {
+	"label" : "sleep",
+	"action" : "systemctl suspend",
+	"text" : "Сон",
+	"keybind" : "j"
+}
+{
     "label" : "lock",
     "action" : "hyprlock",
     "text" : "Заблокировать",
