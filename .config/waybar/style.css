@@ -71,7 +71,7 @@
 }
 
 #clock {
-  margin-right: 12pt;
+  margin-right: 6pt;
 }
 
 #cpu {
@@ -115,17 +115,19 @@
 }
 
 #custom-color-picker {
-  margin-left: 5px;
-  margin-right: 18pt;
+  margin-left: 6pt;
+  margin-right: 6pt;
   font-size: 10pt;
 }
 
 #custom-swaync {
-  margin-right: 18pt;
+  margin-left: 6pt;
+  margin-right: 6pt;
   font-size: 10pt;
 }
 
 #custom-power {
+  margin-left: 6pt;
   margin-right: 11pt;
   font-size: 10pt;
 }
