@@ -37,7 +37,7 @@ sudo mkinitcpio -P
 # Install Hyprland and Wayland ecosystem with error handling
 if ! sudo pacman -S --needed --noconfirm \
     hyprland waybar swaync wlroots0.18 grim slurp swaybg \
-        xdg-desktop-portal-hyprland xdg-desktop-portal-gtk qt6-wayland qt5-wayland \
+        wl-clipboard cliphist xdg-desktop-portal-hyprland xdg-desktop-portal-gtk qt6-wayland qt5-wayland \
         gtk3 gtk4 nwg-look cantarell-fonts 2>/tmp/hyprland-error.log
 then
     echo "Ошибка установки Hyprland! Лог ошибок:"
@@ -48,12 +48,10 @@ fi
 # ========================
 # WAYLAND ESSENTIALS
 # ========================
-# Добавлены обязательные зависимости
 sudo pacman -S --needed --noconfirm \
     lib32-vulkan-icd-loader vulkan-icd-loader \
     seatd
 
-# Настройка seatd для non-systemd систем
 sudo usermod -aG seat "$USER"
 sudo systemctl enable seatd.service
 
@@ -103,7 +101,7 @@ sudo /usr/bin/setcap cap_net_admin=ep /usr/lib/nekoray/nekobox_core
 # DESKTOP APPS
 # ========================
 sudo pacman -S --needed --noconfirm \
-    nautilus gnome-keyring polkit-gnome telegram-desktop copyq xdotool btop bitwarden discord chromium micro eza
+    nautilus gnome-keyring polkit-gnome telegram-desktop xdotool btop bitwarden discord chromium micro eza
 
 # ========================
 # ZSH & SHELL SETUP
