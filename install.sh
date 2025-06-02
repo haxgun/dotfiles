@@ -1,80 +1,157 @@
 #!/bin/bash
 
-echo "Setting timezone to Asia/Yekaterinburg"
-timedatectl set-timezone Asia/Yekaterinburg
+# ========================
+# SYSTEM BASE SETUP
+# ========================
+# Update system and install core utilities
 
-echo "Installing essential packages"
-sudo pacman -S --needed --noconfirm git micro chromium eza base-devel ninja yaml-cpp cmake go
+sudo cp pacman.conf /etc
+sudo pacman -Syu --noconfirm
+sudo pacman -S --needed --noconfirm \
+    linux-headers base-devel git cmake ninja go \
+    networkmanager wget curl unzip tar \
+    lsb-release reflector rsync less man-db man-pages \
+    tzdata
 
-echo "Cloning and installing yay"
-git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si && cd ..
+# Enable essential services
+sudo systemctl enable --now NetworkManager
 
-echo "Installing additional packages with yay"
-yay -S --noconfirm zen-browser-bin nekoray-bin sing-geoip-common sing-geoip-db sing-geoip-rule-set sing-geosite-common sing-geosite-db sing-geosite-rule-set
+# ========================
+# NVIDIA DRIVER SETUP
+# ========================
+# Install NVIDIA open drivers and utilities
+sudo pacman -S --needed --noconfirm \
+    nvidia-open-dkms nvidia-utils lib32-nvidia-utils nvidia-settings egl-wayland
+
+# Set kernel parameters for NVIDIA DRM modeset
+sudo sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="[^"]*/& nvidia-drm.modeset=1/' /etc/default/grub
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+# Add NVIDIA modules to initramfs
+sudo sed -i 's/^MODULES=()/MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' /etc/mkinitcpio.conf
+sudo mkinitcpio -P
+
+# ========================
+# HYPRLAND & GRAPHICS STACK
+# ========================
+# Install Hyprland and Wayland ecosystem with error handling
+if ! sudo pacman -S --needed --noconfirm \
+    hyprland waybar swaync wlroots0.18 grim slurp swaybg \
+        xdg-desktop-portal-hyprland xdg-desktop-portal-gtk qt6-wayland qt5-wayland \
+        gtk3 gtk4 nwg-look cantarell-fonts 2>/tmp/hyprland-error.log
+then
+    echo "Ошибка установки Hyprland! Лог ошибок:"
+    cat /tmp/hyprland-error.log
+    exit 1
+fi
+
+# ========================
+# WAYLAND ESSENTIALS
+# ========================
+# Добавлены обязательные зависимости
+sudo pacman -S --needed --noconfirm \
+    lib32-vulkan-icd-loader vulkan-icd-loader \
+    seatd
+
+# Настройка seatd для non-systemd систем
+sudo usermod -aG seat "$USER"
+sudo systemctl enable seatd.service
+
+# ========================
+# FONTS AND LOCALE
+# ========================
+# Install popular fonts and set locale
+sudo pacman -S --needed --noconfirm \
+    noto-fonts ttf-dejavu ttf-liberation ttf-opensans ttf-font-awesome
+
+# Uncomment ru_RU.UTF-8 locale and generate
+sudo sed -i 's/#ru_RU.UTF-8/ru_RU.UTF-8/' /etc/locale.gen
+sudo locale-gen
+sudo localectl set-locale LANG=ru_RU.UTF-8
+
+# ========================
+# BLUETOOTH & AUDIO
+# ========================
+sudo pacman -S --needed --noconfirm \
+    bluez bluez-utils blueman pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber sof-firmware alsa-utils pavucontrol easyeffects
+
+sudo systemctl enable --now bluetooth
+
+# ========================
+# AUR HELPER (yay)
+# ========================
+if ! command -v yay &>/dev/null; then
+    git clone https://aur.archlinux.org/yay-bin.git
+    cd yay-bin && makepkg -si --noconfirm && cd ..
+    rm -rf yay-bin
+fi
+
+# ========================
+# AUR PACKAGES
+# ========================
+yay -S --noconfirm  --overwrite='*' \
+    zen-browser-bin nekoray-bin sing-geoip-common sing-geoip-db sing-geoip-rule-set \
+    sing-geosite-common sing-geosite-db sing-geosite-rule-set \
+    apple-font ttf-jetbrains-mono-nerd ttf-jetbrains-mono ttf-google-fonts-git ttf-apple-emoji nerd-fonts-inter \
+    whitesur-gtk-theme whitesur-icon-theme whitesur-cursor-theme-git papirus-icon-theme-git \
+    hyprlock-git hyprpaper-git hyprshot wofi-emoji hyprpicker wlogout spotify
+
+# Fix nekoray
 sudo /usr/bin/setcap cap_net_admin=ep /usr/lib/nekoray/nekobox_core
-yay -S --noconfirm apple-font ttf-jetbrains-mono-nerd ttf-jetbrains-mono ttf-google-fonts-git ttf-apple-emoji nerd-fonts-inter
 
-echo "Installing desktop applications"
-sudo pacman -S --noconfirm nautilus waybar swaync polkit-gnome gnome-keyring easyeffects telegram-desktop copyq btop unzip bitwarden
+# ========================
+# DESKTOP APPS
+# ========================
+sudo pacman -S --needed --noconfirm \
+    nautilus gnome-keyring polkit-gnome telegram-desktop copyq xdotool btop bitwarden discord chromium micro eza
 
-echo "Setting up zsh and oh-my-zsh"
-sudo pacman -S --noconfirm zsh starship
-sudo chsh -s /usr/bin/zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# ========================
+# ZSH & SHELL SETUP
+# ========================
+sudo pacman -S --needed --noconfirm zsh starship
+sudo chsh -s /usr/bin/zsh "$USER"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 cp .zshrc ~/
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/.zsh-syntax-highlighting" --depth 1
 echo "source $HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> "$HOME/.zshrc"
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 
-echo "Installing bun"
+# ========================
+# NODE, BUN, ZED
+# ========================
+sudo pacman -S --needed --noconfirm nodejs npm uv
 curl -fsSL https://bun.sh/install | bash
-
-echo "Installing Node.js and related packages"
-sudo pacman -S --noconfirm nodejs npm uv
-
-echo "Installing Zed editor"
-yay -S --noconfirm zed-git
+curl -f https://zed.dev/install.sh | ZED_CHANNEL=preview sh
 echo 'export PATH=$HOME/.local/bin:$PATH' >> ~/.zshrc
 
-echo "Setting locale to ru_RU.UTF-8"
-sudo cp locale.gen /etc/locale.gen
-sudo locale-gen
-sudo localectl set-locale ru_RU.UTF-8
-
-echo "Installing additional tools and dependencies"
-sudo pacman -S --noconfirm qt6-tools gtk4 gtk3 brightnessctl fastfetch xdg-desktop-portal-hyprland xdg-desktop-portal-gtk nwg-look cantarell-fonts
-
-echo "Installing themes and icons from AUR"
-yay -S --noconfirm whitesur-gtk-theme whitesur-icon-theme whitesur-cursor-theme-git
-
-echo "Creating configuration directories"
+# ========================
+# THEMES, ICONS, WALLPAPER
+# ========================
 mkdir -p ~/.config/gtk-3.0 ~/.config/gtk-4.0
-
-echo "Updating icon cache"
 gtk-update-icon-cache -f -t ~/.local/share/icons/Papirus-Dark
-
-echo "Copying configuration files"
-cp .config ~/
-
-echo "Installing additional utilities"
-yay -S --noconfirm hyprlock-git hyprpaper-git hyprshot wofi-emoji hyprpicker
-yay -S --noconfirm wlogout spotify
-sudo pacman -S --noconfirm hyprpicker
-
-echo "Installing discord"
-sudo pacman -S --noconfirm discord
-
-echo "Copying wallpaper"
 cp wallpaper.png ~/
 
-echo "Installing bluetooth"
-sudo pacman -S --noconfirm bluez bluez-utils blueman
-sudo modprobe btusb
-sudo systemctl start bluetooth.service
-sudo systemctl enable bluetooth.service
+# ========================
+# CONFIG FILES
+# ========================
+cp -r .config ~/
 
-echo "Copy .config"
-cp .config ~/
-
-echo "Reboot"
+# ========================
+# FINAL REBOOT
+# ========================
+echo "Installation complete. Rebooting system..."
 sudo reboot
+
+# ========================
+# APPS
+# ========================
+yay -S beekeeper-studio obs-studio-git
+
+
+# ========================
+# ENGLISH COMMENTS
+# ========================
+# This script sets up a full-featured Arch Linux desktop with Hyprland and NVIDIA (open-source) drivers.
+# It includes all essential packages, fonts, localization, Bluetooth, audio, AUR helper, and user applications.
+# NVIDIA Wayland variables are set for best compatibility.
+# The system is ready for daily use after reboot.

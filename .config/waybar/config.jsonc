@@ -85,7 +85,7 @@
       "active-only": false,
       "persistent-workspaces": {
         "HDMI-A-1": [
-          11, 12
+          9, 10
         ] // but only three on HDMI-A-1
       }
     },
@@ -158,9 +158,9 @@
       "spacing": 10
     },
     "pulseaudio": {
-      "format": "{icon}  <b>{volume}%</b>",
+      "format": "{icon} <b>{volume}%</b>",
       "format-muted": "󰝟",
-      "format-bluetooth": "{icon}   <b>{volume}%</b>",
+      "format-bluetooth": "{icon}  <b>{volume}%</b>",
       "format-bluetooth-muted": "󰝟 ",
       "format-icons": {
         "headset": "",
