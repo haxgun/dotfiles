@@ -90,9 +90,11 @@ fi
 yay -S --noconfirm  --overwrite='*' \
     zen-browser-bin nekoray-bin sing-geoip-common sing-geoip-db sing-geoip-rule-set \
     sing-geosite-common sing-geosite-db sing-geosite-rule-set \
-    apple-font ttf-jetbrains-mono-nerd ttf-jetbrains-mono ttf-google-fonts-git ttf-apple-emoji nerd-fonts-inter \
+    apple-font ttf-jetbrains-mono-nerd ttf-jetbrains-mono ttf-google-fonts-git nerd-fonts-inter \
     whitesur-gtk-theme whitesur-icon-theme whitesur-cursor-theme-git papirus-icon-theme-git \
     hyprlock-git hyprpaper-git hyprshot wofi-emoji hyprpicker wlogout spotify
+
+sudo pacman -S noto-fonts-emoji
 
 # Fix nekoray
 sudo /usr/bin/setcap cap_net_admin=ep /usr/lib/nekoray/nekobox_core
