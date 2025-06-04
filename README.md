@@ -48,7 +48,7 @@ cd dotfiles
 ```
 
 > [!IMPORTANT] 
-2. **👀 Review the script:**
+> 2. **👀 Review the script:**
 Open `install.sh` in your editor and ensure you understand the operations.
 
 3. **🔐 Make the script executable:**
