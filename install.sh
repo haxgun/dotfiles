@@ -71,7 +71,7 @@ sudo localectl set-locale LANG=ru_RU.UTF-8
 # BLUETOOTH & AUDIO
 # ========================
 sudo pacman -S --needed --noconfirm \
-    bluez bluez-utils blueman pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber sof-firmware alsa-utils pavucontrol easyeffects
+    bluez bluez-utils blueman pipewire pipewire-pulse pipewire-alsa pulseaudio-alsa pipewire-jack wireplumber sof-firmware alsa-utils pavucontrol easyeffects
 
 sudo systemctl enable --now bluetooth
 
