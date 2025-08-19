@@ -6,7 +6,7 @@
     "margin-bottom": 3,
     "margin-left": 6,
     "margin-right": 6,
-    "modules-left": ["custom/wofi", "hyprland/workspaces", "mpris"],
+    "modules-left": ["hyprland/workspaces", "mpris"],
     "modules-center": ["hyprland/window"],
     "modules-right": [
       "hyprland/language",
@@ -23,7 +23,7 @@
       "custom/power"
     ],
     "custom/vpn": {
-      "format": "VPN ",
+      "format": "",
       "exec": "echo '{\"class\": \"connected\"}'",
       "exec-if": "test -d /proc/sys/net/ipv4/conf/neko-tun",
       "return-type": "json",
@@ -53,14 +53,6 @@
       "format": "{}",
       "format-ru": "🇷🇺 RU",
       "format-en": "🇺🇸 US"
-    },
-    "custom/wofi": {
-      "format": "",
-      "on-click": "wofi --show drun",
-      "on-click-middle": "pkill -9 wofi",
-      "tooltip-format": "{}",
-      "exec": "~/.config/waybar/scripts/cheatsheet.py",
-      "interval": "once"
     },
     "hyprland/workspaces": {
       "all-outputs": true,
