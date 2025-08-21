@@ -1,6 +1,6 @@
 # ⚙️ dotfiles
 
-<img src="screenshots/preview.jpg">
+<img src="screenshots/preview.png">
 
 > [!CAUTION]
 > ⚠️ This setup is specific for [Hyprland](https://github.com/hyprwm/Hyprland). Dont install it if you don't know what you're doing.
@@ -47,7 +47,7 @@ git clone https://github.com/haxgun/dotfiles.git
 cd dotfiles
 ```
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > 2. **👀 Review the script:**
 Open `install.sh` in your editor and ensure you understand the operations.
 
