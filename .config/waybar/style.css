@@ -82,6 +82,7 @@ tooltip {
 }
 
 #memory {
+	color: #fab387;
     margin-right: 12px;
 }
 
@@ -91,6 +92,7 @@ tooltip {
 }
 
 #cpu {
+	color: #fa8787;
     margin-right: 12px;
 }
 
@@ -121,10 +123,12 @@ tooltip {
 }
 
 #pulseaudio {
+	color: #74c7ec;
     margin-right: 10px;
 }
 
 #custom-vpn {
+	color: #7CD47B;
     margin-left: 4px;
     margin-right: 10px;
 }
@@ -134,6 +138,7 @@ tooltip {
 }
 
 #custom-bluetooth {
+	color: #0082FC;
     margin-left: 4px;
     margin-right: 4px;
     font-size: 14px;
