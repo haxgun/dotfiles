@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: "JetBrainsMono Nerd Font";
+    font-family: "GeistMono Nerd Font";
     font-size: 12px;
     font-weight: 800;
     transition-property: background;
@@ -30,7 +30,7 @@
 }
 
 tooltip {
-    background: #121212;
+    background: rgba(18, 18, 18, 0.8);
     color: #f2f2f2;
     border-radius: 5px;
 }
