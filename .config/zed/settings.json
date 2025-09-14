@@ -1,0 +1,53 @@
+{
+  "icon_theme": "Light Charmed Icons",
+  "agent": {
+    "always_allow_tool_actions": true,
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "gpt-4.1"
+    },
+    "model_parameters": [],
+    "inline_assistant_model": {
+      "provider": "copilot_chat",
+      "model": "claude-sonnet-4"
+    }
+  },
+  "ui_font_family": "Geist Mono",
+  "ui_font_size": 14,
+  "format_on_save": "prettier",
+  "base_keymap": "JetBrains",
+  "theme": {
+    "mode": "dark",
+    "light": "One Light",
+    "dark": "Oscura"
+  },
+  "buffer_font_family": "Geist Mono",
+  "buffer_font_size": 16,
+  "buffer_font_weight": 700,
+  "inlay_hints": {
+    "enabled": true
+  },
+  "terminal": {
+    "font_family": "JetBrains Mono NL",
+    "env": {
+      "EDITOR": "zed --wait"
+    }
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  "notification_panel": {
+    "button": false
+  },
+  "outline_panel": {
+    "button": false
+  },
+  "chat_panel": {
+    "button": "never",
+    "dock": "right"
+  },
+  "collaboration_panel": {
+    "button": false
+  }
+}
