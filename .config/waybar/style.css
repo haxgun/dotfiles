@@ -39,20 +39,19 @@ tooltip {
     margin-left: 4px;
 }
 
-/* #workspaces button { */
-/*   color: #585b70; */
-/* } */
+#workspaces button {
+  color: #353536;
+}
+
+#workspaces button.visible,
+#workspaces button.active {
+  color: #ffffff;
+}
+
 
 #workspaces button:not(:first-child) {
     margin-left: 2px;
 }
-
-/* #workspaces button.visible { */
-/*   color: #89b4fa; */
-/* } */
-/* #workspaces button.active { */
-/*   color: #f38ba8; */
-/* } */
 
 #workspaces button:hover,
 #workspaces button:focus {
@@ -80,7 +79,7 @@ tooltip {
 }
 
 #memory {
-	color: #fab387;
+	color: #353536;
     margin-right: 12px;
 }
 
@@ -90,7 +89,7 @@ tooltip {
 }
 
 #cpu {
-	color: #fa8787;
+	color: #353536;
     margin-right: 12px;
 }
 
@@ -121,40 +120,41 @@ tooltip {
 }
 
 #pulseaudio {
-	color: #74c7ec;
-    margin-right: 10px;
+	color: #353536;
+    margin-right: 12px;
 }
 
 #custom-vpn {
-	color: #7CD47B;
-    margin-left: 4px;
+	color: #ffffff;
     margin-right: 10px;
 }
 
 #custom-temperature {
+	color: #353536;
     margin-right: 10px;
 }
 
 #custom-bluetooth {
-	color: #0082FC;
+	color: #ffffff;
     margin-left: 4px;
     margin-right: 4px;
     font-size: 14px;
 }
 
 #custom-color-picker {
+	color: #ffffff;
     margin-left: 6px;
     margin-right: 6px;
 }
 
 #custom-swaync {
+	color: #ffffff;
     margin-left: 8px;
     margin-right: 6px;
 }
 
 #custom-power {
+	color: #ffffff;
     margin-left: 6px;
     margin-right: 11px;
 }
-
-/*# sourceMappingURL=style.css.map */
