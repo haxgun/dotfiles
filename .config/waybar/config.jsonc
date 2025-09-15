@@ -25,7 +25,7 @@
     "custom/vpn": {
       "format": "",
       "exec": "echo '{\"class\": \"connected\"}'",
-      "exec-if": "test -d /proc/sys/net/ipv4/conf/singbox_tun",
+      "exec-if": "test -d /proc/sys/net/ipv4/conf/throne-tun",
       "return-type": "json",
       "interval": 5,
       "tooltip": false,

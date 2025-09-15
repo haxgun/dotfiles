@@ -12,6 +12,8 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor root)
 source $ZSH/oh-my-zsh.sh
 source /home/haxgun/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+alias vr="cd ~/Git_projects/Valory && bun run dev"
+
 alias c='clear'
 alias cdv='cd ~/Git_projects/Valory'
 
