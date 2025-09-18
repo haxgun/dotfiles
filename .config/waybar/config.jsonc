@@ -1,17 +1,14 @@
 [
   {
+    "height": 32,
     "layer": "top",
-    "position": "top",
     "margin-top": 0,
-    "margin-bottom": 0,
     "margin-left": 0,
     "margin-right": 0,
-    "modules-left": ["hyprland/workspaces", "mpris"],
-    "modules-center": ["hyprland/window"],
+    "fixed-center": true,
+    "modules-left": ["hyprland/workspaces", "wlr/taskbar", "hyprland/window"],
     "modules-right": [
-      "custom/temperature",
-      "cpu",
-      "memory",
+      "mpris",
       "pulseaudio",
       "hyprland/language",
       "custom/vpn",
@@ -22,6 +19,40 @@
       "custom/swaync",
       "custom/power",
     ],
+    "hyprland/workspaces": {
+      "all-outputs": false,
+      "format": "{icon}",
+      "format-icons": {
+        "active": "",
+        "visible": "",
+        "default": "",
+      },
+      "on-scroll-up": "hyprctl dispatch workspace e+1 1>/dev/null",
+      "on-scroll-down": "hyprctl dispatch workspace e-1 1>/dev/null",
+      "sort-by-number": true,
+      "active-only": false,
+      "persistent-workspaces": {
+        "HDMI-A-1": [9, 10],
+      },
+    },
+    "wlr/taskbar": {
+      "format": "{icon} {name}",
+      "active-first": true,
+    },
+    "hyprland/window": {
+      "format": "{title}",
+      "separate-outputs": true,
+      "rewrite": {
+        "(.*) — Mozilla Firefox": "󰈹  $1",
+        "(.*) — Zen Browser": "󰺕  Zen - $1",
+        "(.*) - Google Chrome": " $1",
+        "(.*) - Visual Studio Code": "󰨞 $1",
+        "(.*) - nvim": " $1",
+        "kitty": " $1",
+        "dev.zed.Zed": "  $1",
+        "blueman-manager": " Bluetooth Settings",
+      },
+    },
     "custom/vpn": {
       "format": "",
       "exec": "echo '{\"class\": \"connected\"}'",
@@ -55,22 +86,6 @@
       "format-ru": "🇷🇺",
       "format-en": "🇺🇸",
     },
-    "hyprland/workspaces": {
-      "all-outputs": false,
-      "format": "{icon}",
-      "format-icons": {
-        "active": "",
-        "visible": "",
-        "default": "",
-      },
-      "on-scroll-up": "hyprctl dispatch workspace e+1 1>/dev/null",
-      "on-scroll-down": "hyprctl dispatch workspace e-1 1>/dev/null",
-      "sort-by-number": true,
-      "active-only": false,
-      "persistent-workspaces": {
-        "HDMI-A-1": [9, 10],
-      },
-    },
     "mpris": {
       "format": "{player_icon}  {artist} - {title}",
       "format-paused": "{status_icon}  {artist} - {title}",
@@ -84,20 +99,6 @@
       "status-icons": {
         "paused": "",
         "stopped": "",
-      },
-    },
-    "hyprland/window": {
-      "format": "{title}",
-      "separate-outputs": true,
-      "rewrite": {
-        "(.*) — Mozilla Firefox": "󰈹  $1",
-        "(.*) — Zen Browser": "󰺕  Zen - $1",
-        "(.*) - Google Chrome": " $1",
-        "(.*) - Visual Studio Code": "󰨞 $1",
-        "(.*) - nvim": " $1",
-        "kitty": " $1",
-        "dev.zed.Zed": "  $1",
-        "blueman-manager": " Bluetooth Settings",
       },
     },
     "clock": {
@@ -114,14 +115,7 @@
         },
       },
     },
-    "cpu": {
-      "format": "  {usage}%",
-      "on-click": "kitty -e btop",
-    },
-    "memory": {
-      "format": "  {}%",
-      "on-click": "kitty -e btop",
-    },
+
     "custom/bluetooth": {
       "exec": "~/.config/waybar/scripts/bluetooth.sh",
       "interval": 10,
@@ -156,14 +150,6 @@
       "format": "",
       "tooltip": false,
       "on-click": "wlogout",
-    },
-    "custom/temperature": {
-      "format": " {}°C",
-      "interval": 5,
-      "exec": "~/.config/waybar/scripts/temperature.sh",
-      "return-type": "json",
-      "tooltip": true,
-      "on-click": "kitty -e watch -n 1 sensors",
     },
   },
 ]
