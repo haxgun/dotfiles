@@ -48,7 +48,7 @@ window#waybar {
 }
 
 #workspaces button {
-	font-size: 10px;
+    font-size: 10px;
     color: #353536;
     padding: 0 3px 0 0;
     margin: 0;
@@ -78,6 +78,7 @@ window#waybar {
 }
 
 #taskbar button.active {
+    font-weight: bold;
     font-size: 12px;
     margin: 0.3em 0.2em 0.3em 0;
     padding: 1px 0.4em;
@@ -94,10 +95,13 @@ window#waybar {
 tooltip {
     background: rgba(18, 18, 18, 0.8);
     color: #f2f2f2;
+    font-size: 12px;
+    font-weight: bold;
     border-radius: 5px;
 }
 
 #window {
+    font-style: italic;
     font-size: 10px;
     margin: 0 0.4em;
 }
@@ -125,10 +129,6 @@ tooltip {
     margin-right: 4px;
 }
 
-#language {
-    margin-right: 12px;
-}
-
 @keyframes blink {
     to {
         background-color: rgba(30, 34, 42, 0.5);
@@ -136,41 +136,51 @@ tooltip {
     }
 }
 
-#clock {
+#language,
+#custom-color-picker,
+#pulseaudio,
+#clock,
+#cpu,
+#custom-swaync,
+#custom-power,
+#network {
+    color: #ffffff;
     margin-left: 6px;
-    margin-right: 6px;
+    margin-right: 8px;
 }
 
-#pulseaudio {
-    margin-right: 12px;
+#pulseaudio,
+#cpu,
+#bluetooth,
+#network {
+    font-size: 15px;
+}
+
+#bluetooth {
+    font-size: 14px;
+    color: #ffffff;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#custom-expand-icon {
+    color: #ffffff;
+    margin-left: 4px;
+    margin-right: 0;
 }
 
 #custom-vpn {
+    font-size: 12px;
     color: #ffffff;
-    margin-right: 10px;
-}
-
-#custom-bluetooth {
-    color: #ffffff;
-    margin-left: 4px;
-    margin-right: 4px;
-    font-size: 14px;
+    margin-left: 8px;
+    margin-right: 9px;
+    padding-bottom: 1px;
 }
 
 #custom-color-picker {
-    color: #ffffff;
-    margin-left: 6px;
-    margin-right: 6px;
-}
-
-#custom-swaync {
-    color: #ffffff;
-    margin-left: 8px;
-    margin-right: 6px;
+    font-size: 12px;
 }
 
 #custom-power {
-    color: #ffffff;
-    margin-left: 6px;
     margin-right: 11px;
 }
