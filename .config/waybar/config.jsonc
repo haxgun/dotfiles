@@ -57,6 +57,9 @@
   },
   "bluetooth": {
     "format": "",
+    "format-off": "󰂲",
+    "format-on": "",
+    "format-no-controller": "",
     "format-disabled": "󰂲",
     "format-connected": "",
     "tooltip-format": "Devices connected: {num_connections}",
