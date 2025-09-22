@@ -184,3 +184,10 @@ tooltip {
 #custom-power {
     margin-right: 11px;
 }
+
+#custom-stream {
+    color: #CF3265;
+    font-size: 20px;
+    margin-left: 6px;
+    margin-right: 8px;
+}

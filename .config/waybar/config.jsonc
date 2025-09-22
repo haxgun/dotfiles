@@ -20,6 +20,7 @@
     "custom/swaync",
     "custom/power",
     "clock",
+    "custom/stream"
   ],
   "hyprland/workspaces": {
     "all-outputs": false,
@@ -183,4 +184,9 @@
     "tooltip": false,
     "on-click": "wlogout",
   },
+  "custom/stream": {
+  	"exec": "~/.config/waybar/scripts/stream.sh",
+  	"interval": 5,
+  	"return-type": "json"
+  }
 }
