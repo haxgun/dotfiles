@@ -1,7 +1,7 @@
 window {
-  font-family: "SF Pro";
+  font-family: "Geist";
   font-size: 15pt;
-  color: #fff; /* text */
+  color: #fff;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -13,6 +13,7 @@ button {
   animation: gradient_f 20s ease-in infinite;
   transition: all 0.3s ease-in;
   box-shadow: 0 0 10px 2px transparent;
+  border: none;
   border-radius: 10px;
 }
 
