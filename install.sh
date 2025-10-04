@@ -115,6 +115,7 @@ cp .zshrc ~/
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/.zsh-syntax-highlighting" --depth 1
 echo "source $HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> "$HOME/.zshrc"
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+git clone https://github.com/jirutka/zsh-shift-select.git ~/.zsh-shift-select
 
 # ========================
 # NODE, BUN, ZED
