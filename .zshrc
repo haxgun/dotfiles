@@ -10,8 +10,13 @@ zsh-autosuggestions
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor root)
 
 source $ZSH/oh-my-zsh.sh
+source /home/haxgun/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh-shift-select/zsh-shift-select.plugin.zsh
+
+alias vr="cd ~/Git_projects/Valory && bun run dev"
 
 alias c='clear'
+alias cdv='cd ~/Git_projects/Valory'
 
 alias pd='pnpm dev'
 alias pf='pnpm format'
@@ -20,13 +25,20 @@ alias pui='pnpm uninstall'
 alias pxi='pnpx node-modules-inspector'
 
 alias ur='uv run main.py'
+alias uvu='. .venv/bin/activate && uvicorn main:app --reload'
 
 alias bd='bun dev'
+alias bp='bun dev:proxy'
+alias bdd='bun dev --debug'
 alias bf='bun format'
-alias bi='bun add'
+alias bi='bun install'
 alias bui='bun remove'
 alias bx='bunx'
 alias bl='bun lint'
+alias bul='bun update -i --latest'
+
+alias pc="bunx taze"
+alias pcm="bunx taze major"
 
 alias gs='git status'
 alias gp='git push'
@@ -72,10 +84,29 @@ alias gsha='git rev-parse HEAD | pbcopy'
 
 alias ghci='gh run list -L 1'
 
+alias lzg='lazygit'
+alias lzd='sudo lazydocker'
+
+alias dsa='docker stop $(docker ps -q)'
+alias dra='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
+alias ds='docker stop'
+alias dp='docker ps -a'
+
 alias ls="eza --tree --level=1 --icons=always --no-time --no-user --no-permissions"
 
 alias .="source"
 
+alias ssh="TERM=xterm-256color ssh"
+
 eval "$(starship init zsh)"
 
-alias ssh="TERM=xterm-256color ssh"
+
+# bun completions
+[ -s "/home/haxgun/.bun/_bun" ] && source "/home/haxgun/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH=$HOME/.local/bin:$PATH
+export PATH="$PATH:$HOME/go/bin"
+___MY_VMOPTIONS_SHELL_FILE="${HOME}/.jetbrains.vmoptions.sh"; if [ -f "${___MY_VMOPTIONS_SHELL_FILE}" ]; then . "${___MY_VMOPTIONS_SHELL_FILE}"; fi
