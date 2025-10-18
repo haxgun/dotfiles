@@ -1,4 +1,7 @@
 {
+  "prettier": {
+    "allowed": true
+  },
   "icon_theme": "Light Charmed Icons",
   "agent": {
     "always_allow_tool_actions": true,
@@ -14,12 +17,11 @@
   },
   "ui_font_family": "Geist Mono",
   "ui_font_size": 14,
-  "format_on_save": "prettier",
   "base_keymap": "JetBrains",
   "theme": {
     "mode": "dark",
     "light": "One Light",
-    "dark": "Oscura"
+    "dark": "Cursor Blur"
   },
   "buffer_font_family": "Geist Mono",
   "buffer_font_size": 16,
@@ -28,7 +30,7 @@
     "enabled": true
   },
   "terminal": {
-    "font_family": "JetBrains Mono NL",
+    "font_family": "GeistMono Nerd Font",
     "env": {
       "EDITOR": "zed --wait"
     }
